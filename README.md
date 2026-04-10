@@ -15,6 +15,7 @@ OCI GenAI Professional · AI Foundations · 11+ Certifications
 | 03 | [LeadOps CRM](#03-leadops-crm) | AI-Powered Product | Python · Supabase · Next.js · Google Maps API | AI lead gen engine for Houston SMBs |
 | 04 | [VisionConnect](#04-visionconnect) | Spatial Computing / visionOS | Swift · RealityKit · GroupActivities (SharePlay) | Apple Vision Pro multiplayer spatial app — MS capstone |
 | 05 | [Engineer On Air](#05-engineer-on-air) | AI + Web | Vanilla JS · Web Speech API | AI-voiced interactive podcast page |
+| 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 
 ---
 
@@ -95,6 +96,22 @@ Live: [engineer-on-air.vercel.app](https://engineer-on-air.vercel.app)
 
 **Stack:** HTML · CSS · Vanilla JS · Web Speech API · Vercel
 **[View source →](05-engineer-on-air/podcast.html)**
+
+---
+
+## 06 ShutterMuse.Co Portal
+
+**AI-assisted full-stack web build for a Houston-based photography business**
+
+Built from a single photo of a printed flyer — extracted brand identity, layout, and package details to produce a complete, deployable client delivery portal.
+
+- Photographer uploads session photos through a password-protected portal with drag-and-drop and session management
+- Clients retrieve and download their photos by entering their name or session code, from any device
+- Supabase Storage as the backend — fully static site, no server required
+- Responsive layout engineered for iPhone portrait: touch-friendly gallery overlays, 2-column grid, stacked inputs, iOS zoom prevention
+
+**Stack:** HTML · CSS · Vanilla JS · Supabase Storage · Netlify
+**[View project →](06-shuttermuse-portal/README.md)**
 
 ---
 
