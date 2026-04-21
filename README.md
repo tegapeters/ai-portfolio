@@ -103,15 +103,18 @@ Live: [engineer-on-air.vercel.app](https://engineer-on-air.vercel.app)
 
 **AI-assisted full-stack web build for a Houston-based photography business**
 
-Built from a single photo of a printed flyer — extracted brand identity, layout, and package details to produce a complete, deployable client delivery portal.
+Built from a single photo of a printed flyer — extracted brand identity, layout, and package details to produce a complete, deployable client delivery portal. Iterated with real photographers to solve production upload problems.
 
-- Photographer uploads session photos through a password-protected portal with drag-and-drop and session management
-- Clients retrieve and download their photos by entering their name or session code, from any device
-- Supabase Storage as the backend — fully static site, no server required
-- Responsive layout engineered for iPhone portrait: touch-friendly gallery overlays, 2-column grid, stacked inputs, iOS zoom prevention
+- Password-protected photographer portal with drag-and-drop upload, session management, and one-click session delete
+- RAW photo format support (CR2, CR3, NEF, ARW, DNG, ORF, and more) — full sensor data preserved for post-processing
+- Parallel upload engine (4 concurrent uploads) with live progress counter — significantly reduces upload time for large RAW files
+- Per-session upload limit with real-time limit bar and slot counter visible to the photographer
+- Clients retrieve and download photos by name or session code from any device — no login required
+- Supabase Storage backend — fully static site, zero server infrastructure
+- Responsive layout engineered for iPhone portrait: touch-friendly gallery, 2-column grid, stacked inputs, iOS zoom prevention
 
 **Stack:** HTML · CSS · Vanilla JS · Supabase Storage · Netlify
-**[View project →](06-shuttermuse-portal/README.md)**
+**Live:** [shuttermuseco.netlify.app](https://shuttermuseco.netlify.app)
 
 ---
 
