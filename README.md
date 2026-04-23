@@ -12,10 +12,11 @@ OCI GenAI Professional · AI Foundations · 11+ Certifications
 |---|---------|--------|-------|------------|
 | 01 | [Skin Cancer Detection](#01-skin-cancer-detection) | Computer Vision / Deep Learning | Python · TensorFlow · ResNet50 | 86.8% accuracy on benign/malignant classification |
 | 02 | [Dallas Crime Prediction](#02-dallas-crime-prediction) | ML / Classification | Python · scikit-learn · Socrata API | 10-year dataset, 3 models, 2024 holdout evaluation |
-| 03 | [LeadOps CRM](#03-leadops-crm) | AI-Powered Product | Python · Supabase · Next.js · Google Maps API | AI lead gen engine for Houston SMBs |
+| 03 | [LeadOps CRM](#03-leadops-crm) | AI-Powered Product | Python · Supabase · Next.js · Google Maps API | ~2,000 leads, AI engine, automated Keep-Alive agent |
 | 04 | [VisionConnect](#04-visionconnect) | Spatial Computing / visionOS | Swift · RealityKit · GroupActivities (SharePlay) | Apple Vision Pro multiplayer spatial app — MS capstone |
 | 05 | [Engineer On Air](#05-engineer-on-air) | AI + Web | Vanilla JS · Web Speech API | AI-voiced interactive podcast page |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
+| 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
 
 ---
 
@@ -122,4 +123,4 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 Tega's career spans defense (BAE Systems, Lockheed Martin), cybersecurity, and enterprise cloud (Oracle NetSuite). At Oracle he leads GenAI automation engineering — designing LLM pipelines for ticket QA, root cause analysis, and Jira-based incident management using OCI GenAI Services. His work sits at the intersection of ML systems engineering and enterprise product development.
 
-**Contact:** Tegapeters11@gmail.com · Houston, TX · 832.660.1325
+**Contact:** techturi.org@gmail.com · Houston, TX · [LinkedIn](https://www.linkedin.com/in/tega-p-eshareturi-014002142/) · [techturi.org](https://techturi.org)
