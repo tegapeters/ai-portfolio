@@ -15,9 +15,10 @@ Google Maps Places API
         │
         ▼
 Supabase (PostgreSQL)
-  - Lead storage
+  - Lead storage (~2,000 leads)
   - Deduplication
   - Proprietary scoring algorithm
+  - Keep-Alive Agent (Vercel Cron)
         │
         ▼
 Next.js Frontend (Vercel)
@@ -32,6 +33,11 @@ Next.js Frontend (Vercel)
 - Queries Google Maps Places API by industry category and geographic radius
 - Filters for businesses with no website or a low-quality web presence
 - Deduplicates against existing pipeline
+- **Dataset Scale:** Successfully ingested ~2,000 verified Houston-area leads.
+
+**Supabase Keep-Alive Agent**
+- Custom Vercel Cron agent implemented to prevent database pausing during development gaps.
+- Executes automated queries every 72 hours to maintain persistent database connectivity.
 
 **Lead Scoring Algorithm**
 - Proprietary scoring model weighing: category competition density, review volume, business age signals, and contact availability

@@ -17,6 +17,7 @@ OCI GenAI Professional · AI Foundations · 11+ Certifications
 | 05 | [Engineer On Air](#05-engineer-on-air) | AI + Web | Vanilla JS · Web Speech API | AI-voiced interactive podcast page |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
+| 08 | [Job Bot](#08-job-bot) | AI Automation / Agentic | Python · Claude API · Supabase · Streamlit | End-to-end job application engine: multi-source scraping, Haiku scoring, Sonnet cover letters, Streamlit dashboard, MCP server |
 
 ---
 
@@ -116,6 +117,25 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 **Stack:** HTML · CSS · Vanilla JS · Supabase Storage · Netlify
 **Live:** [shuttermuseco.netlify.app](https://shuttermuseco.netlify.app)
+
+---
+
+## 08 Job Bot
+
+**AI-powered job application engine — scrape, score, cover letter, track, apply**
+
+End-to-end pipeline that sources job listings from LinkedIn, Indeed, and Remotive, scores each one against a target resume using Claude AI, generates tailored cover letters for qualified matches, and surfaces everything in a Streamlit dashboard for review.
+
+- Multi-source scraping with LinkedIn session-cookie auth, Indeed, and Remotive
+- **Dual-model AI pipeline:** Claude Haiku for fast 1–10 resume-fit scoring (seniority, salary match, reason); Claude Sonnet for role-specific 3-paragraph cover letters
+- Deduplication layer — already-scored jobs are never re-processed, preventing repeated API spend
+- Supabase backend tracks full application lifecycle: `new → applied → interview → rejected`
+- Streamlit dashboard with score distribution charts, filterable job table, and inline status updates
+- MCP server exposes all tools so Claude can orchestrate the full workflow via natural language
+- macOS LaunchAgent for daily automated scraping runs
+
+**Stack:** Python · Anthropic SDK · Claude Haiku + Sonnet · Playwright · Supabase · Streamlit · MCP
+**[View project overview →](08-job-bot/README.md)**
 
 ---
 
