@@ -17,7 +17,8 @@ OCI GenAI Professional · AI Foundations · 11+ Certifications
 | 05 | [Engineer On Air](#05-engineer-on-air) | AI + Web | Vanilla JS · Web Speech API | AI-voiced interactive podcast page |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
-| 08 | [Job Bot](#08-job-bot) | AI Automation / Agentic | Python · Claude API · Supabase · Streamlit | End-to-end job application engine: multi-source scraping, Haiku scoring, Sonnet cover letters, Streamlit dashboard, MCP server |
+| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude API · Supabase · Streamlit | End-to-end job application engine: multi-source scraping, Haiku scoring, Sonnet cover letters, Streamlit dashboard, MCP server |
+| 09 | [Techturi IG Campaign](#09-techturi-ig-campaign) | Content Automation | Python · GitHub Actions · Playwright · Gmail API | 30-day Instagram campaign: automated daily email briefs, post rendering pipeline, GitHub Actions scheduling — no laptop required |
 
 ---
 
@@ -120,7 +121,7 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 ---
 
-## 08 Job Bot
+## 08 Job Pal
 
 **AI-powered job application engine — scrape, score, cover letter, track, apply**
 
@@ -136,6 +137,22 @@ End-to-end pipeline that sources job listings from LinkedIn, Indeed, and Remotiv
 
 **Stack:** Python · Anthropic SDK · Claude Haiku + Sonnet · Playwright · Supabase · Streamlit · MCP
 **[View project overview →](08-job-bot/README.md)**
+
+---
+
+## 09 Techturi IG Campaign
+
+**30-day Instagram content automation system — no laptop required**
+
+Fully automated content pipeline for a 30-day Instagram growth campaign promoting Techturi's free tech education platform. Posts are pre-designed as pixel-perfect HTML/CSS cards, rendered to PNG via Playwright, and delivered each morning via a GitHub Actions-scheduled email brief — without the laptop open.
+
+- **Post design system:** 30 bespoke HTML/CSS posts (1080×1350px) matching the Techturi brand — dark theme, JetBrains Mono, Fraunces serif, chartreuse accent (#D4FF3A)
+- **Rendering pipeline:** Playwright headless browser renders each HTML post to a full-resolution PNG
+- **Daily brief engine:** Python script parses a 30-day caption bank, embeds PNG previews as base64 in an HTML email, and delivers copy-paste-ready caption + hashtags each morning
+- **Laptop-free scheduling:** GitHub Actions cron (`0 13 * * *` = 8am CDT) triggers the brief daily — no local machine required; credentials managed via GitHub Secrets
+- **4-attempt SMTP retry:** Handles transient network failures at cold-start with exponential backoff
+
+**Stack:** Python · GitHub Actions · Playwright · Gmail SMTP · HTML/CSS · Supabase
 
 ---
 
