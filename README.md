@@ -125,18 +125,19 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 **AI-powered job application engine — scrape, score, cover letter, track, apply**
 
-End-to-end pipeline that sources job listings from LinkedIn, Indeed, and Remotive, scores each one against a target resume using Claude AI, generates tailored cover letters for qualified matches, and surfaces everything in a Streamlit dashboard for review.
+End-to-end pipeline that sources job listings from 5 sources, scores each one against an uploaded resume using Claude AI, generates tailored cover letters for qualified matches, and surfaces everything in a branded Streamlit dashboard. Deployed live as a beta SaaS product.
 
-- Multi-source scraping with LinkedIn session-cookie auth, Indeed, and Remotive
+- **5-source scraping:** LinkedIn, Indeed, Remotive, We Work Remotely, Jobicy — deduplicated across all sources
+- **Resume upload:** PDF, DOCX, or TXT — text extracted automatically via PyMuPDF and python-docx
 - **Dual-model AI pipeline:** Claude Haiku for fast 1–10 resume-fit scoring (seniority, salary match, reason); Claude Sonnet for role-specific 3-paragraph cover letters
+- **Pipeline stages:** Review Queue → Applied → Interviews — each with cover letter visible and one-click status updates
 - Deduplication layer — already-scored jobs are never re-processed, preventing repeated API spend
 - Supabase backend tracks full application lifecycle: `new → applied → interview → rejected`
-- Streamlit dashboard with score distribution charts, filterable job table, and inline status updates
+- Techturi-branded Streamlit dashboard deployed on Streamlit Community Cloud
 - MCP server exposes all tools so Claude can orchestrate the full workflow via natural language
-- macOS LaunchAgent for daily automated scraping runs
 
-**Stack:** Python · Anthropic SDK · Claude Haiku + Sonnet · Playwright · Supabase · Streamlit · MCP
-**[View project overview →](08-job-bot/README.md)**
+**Stack:** Python · Anthropic SDK · Claude Haiku + Sonnet · Playwright · Supabase · Streamlit · PyMuPDF · MCP
+**Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[View repo →](https://github.com/tegapeters/job-bot)**
 
 ---
 
