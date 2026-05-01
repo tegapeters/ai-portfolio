@@ -2,7 +2,7 @@
 
 **Senior NES Global Improvement Engineer · Oracle NetSuite · Houston, TX**
 MS Computer Information Systems, Data Science · University of Houston Clear Lake · 2025
-OCI GenAI Professional · AI Foundations · 11+ Certifications
+OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 Certifications
 
 ---
 
@@ -66,6 +66,8 @@ Three-layer architecture that identifies businesses without a web presence, scor
 
 Built as a real product, not a demo. Proprietary lead scoring algorithm.
 Live demo available upon request.
+
+> **Early-stage caveat:** Google Maps and Google Search are not a 1-to-1 relationship. A business can appear in Maps with no website field populated, yet still have a web presence discoverable via search — and vice versa. The current scraping layer relies solely on the Places API `website` field, which means lead quality varies by industry and region. Improving precision requires cross-referencing Maps results against Search to validate true web absence. This is an active area of iteration.
 
 **Stack:** Python · Google Maps Places API · Supabase · PostgreSQL · Next.js · Vercel
 **[View project overview →](03-leadops-crm/README.md)**
