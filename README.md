@@ -16,8 +16,7 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 04 | [VisionConnect](#04-visionconnect) | Spatial Computing / visionOS | Swift · RealityKit · GroupActivities (SharePlay) | Apple Vision Pro multiplayer spatial app — MS capstone |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
-| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events, live at jobpal.streamlit.app |
-| 09 | [Techturi IG Campaign](#09-techturi-ig-campaign) | Content Automation | Python · GitHub Actions · Playwright · Gmail API | 30-day Instagram campaign: automated daily email briefs, post rendering pipeline, GitHub Actions scheduling — no laptop required |
+| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
 
 ---
 
@@ -126,23 +125,7 @@ End-to-end pipeline that sources job listings in parallel across 5 boards, score
 - MCP server exposes all tools so Claude can orchestrate the full workflow via natural language
 
 **Stack:** Python · Claude Sonnet · Supabase · Streamlit · PyMuPDF · imaplib · ddgs · Playwright · MCP
-**Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[View repo →](https://github.com/tegapeters/job-bot)**
-
----
-
-## 09 Techturi IG Campaign
-
-**30-day Instagram content automation system — no laptop required**
-
-Fully automated content pipeline for a 30-day Instagram growth campaign promoting Techturi's free tech education platform. Posts are pre-designed as pixel-perfect HTML/CSS cards, rendered to PNG via Playwright, and delivered each morning via a GitHub Actions-scheduled email brief — without the laptop open.
-
-- **Post design system:** 30 bespoke HTML/CSS posts (1080×1350px) matching the Techturi brand — dark theme, JetBrains Mono, Fraunces serif, chartreuse accent (#D4FF3A)
-- **Rendering pipeline:** Playwright headless browser renders each HTML post to a full-resolution PNG
-- **Daily brief engine:** Python script parses a 30-day caption bank, embeds PNG previews as base64 in an HTML email, and delivers copy-paste-ready caption + hashtags each morning
-- **Laptop-free scheduling:** GitHub Actions cron (`0 13 * * *` = 8am CDT) triggers the brief daily — no local machine required; credentials managed via GitHub Secrets
-- **4-attempt SMTP retry:** Handles transient network failures at cold-start with exponential backoff
-
-**Stack:** Python · GitHub Actions · Playwright · Gmail SMTP · HTML/CSS · Supabase
+**Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[Overview →](https://job-pal-overview.vercel.app)** | **[View repo →](https://github.com/tegapeters/job-bot)**
 
 ---
 
