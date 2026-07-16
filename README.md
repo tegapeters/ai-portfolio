@@ -14,10 +14,9 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 02 | [Dallas Crime Prediction](#02-dallas-crime-prediction) | ML / Classification | Python · scikit-learn · Socrata API | 10-year dataset, 3 models, 2024 holdout evaluation |
 | 03 | [LeadOps CRM](#03-leadops-crm) | AI-Powered Product | Python · Supabase · Next.js · Google Maps API | ~2,000 leads, AI engine, automated Keep-Alive agent |
 | 04 | [VisionConnect](#04-visionconnect) | Spatial Computing / visionOS | Swift · RealityKit · GroupActivities (SharePlay) | Apple Vision Pro multiplayer spatial app — MS capstone |
-| 05 | [Engineer On Air](#05-engineer-on-air) | AI + Web | Vanilla JS · Web Speech API | AI-voiced interactive podcast page |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
-| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude API · Supabase · Streamlit | End-to-end job application engine: multi-source scraping, Haiku scoring, Sonnet cover letters, Streamlit dashboard, MCP server |
+| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events, live at jobpal.streamlit.app |
 | 09 | [Techturi IG Campaign](#09-techturi-ig-campaign) | Content Automation | Python · GitHub Actions · Playwright · Gmail API | 30-day Instagram campaign: automated daily email briefs, post rendering pipeline, GitHub Actions scheduling — no laptop required |
 
 ---
@@ -91,19 +90,6 @@ Collaborative spatial computing experience built for visionOS using RealityKit a
 
 ---
 
-## 05 Engineer On Air
-
-**AI-voiced interactive podcast page — built to narrate Tega's career arc**
-
-Single-page podcast player using the Web Speech API for browser-native TTS narration. Seven chapters, full progress bar, volume control, chapter-level seek.
-
-Live: [engineer-on-air.vercel.app](https://engineer-on-air.vercel.app)
-
-**Stack:** HTML · CSS · Vanilla JS · Web Speech API · Vercel
-**[View source →](05-engineer-on-air/podcast.html)**
-
----
-
 ## 06 ShutterMuse.Co Portal
 
 **AI-assisted full-stack web build for a Houston-based photography business**
@@ -125,20 +111,21 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 ## 08 Job Pal
 
-**AI-powered job application engine — scrape, score, cover letter, track, apply**
+**Agentic AI job search engine — scrape, score, apply, track, network**
 
-End-to-end pipeline that sources job listings from 5 sources, scores each one against an uploaded resume using Claude AI, generates tailored cover letters for qualified matches, and surfaces everything in a branded Streamlit dashboard. Deployed live as a beta SaaS product.
+End-to-end pipeline that sources job listings in parallel across 5 boards, scores each one against an uploaded resume using Claude Sonnet, generates tailored cover letters for qualified matches, and surfaces everything in a branded Streamlit dashboard. Deployed live as a beta SaaS product with multi-user auth.
 
-- **5-source scraping:** LinkedIn, Indeed, Remotive, We Work Remotely, Jobicy — deduplicated across all sources
-- **Resume upload:** PDF, DOCX, or TXT — text extracted automatically via PyMuPDF and python-docx
-- **Dual-model AI pipeline:** Claude Haiku for fast 1–10 resume-fit scoring (seniority, salary match, reason); Claude Sonnet for role-specific 3-paragraph cover letters
-- **Pipeline stages:** Review Queue → Applied → Interviews — each with cover letter visible and one-click status updates
-- Deduplication layer — already-scored jobs are never re-processed, preventing repeated API spend
-- Supabase backend tracks full application lifecycle: `new → applied → interview → rejected`
-- Techturi-branded Streamlit dashboard deployed on Streamlit Community Cloud
+- **Parallel 5-source scraping:** LinkedIn, Indeed, Remotive, We Work Remotely, Jobicy — deduplicated across all sources, runs concurrently
+- **Resume upload:** PDF, DOCX, or TXT — text extracted via PyMuPDF and python-docx; full resume sent via prompt caching for token efficiency
+- **Claude Sonnet pipeline:** 1–10 resume-fit scoring (seniority, salary match, one-line reason) + role-specific 3-paragraph cover letters for 8+ matches
+- **Gmail rejection scanning:** IMAP-based scan auto-runs on Applied page load — surfaces rejection emails, matches to applied jobs, one-click mark as rejected
+- **Networking events:** 3-source event scraper (Meetup RSS, Luma city JSON, AllEvents.in) → 95+ events/city; Interested/Attending tracking with status persistence across re-scrapes
+- **Application lifecycle:** Review Queue → Applied → Interviews → Rejected — full tracking with response rate and pipeline timing
+- **Pipeline timing:** Per-stage duration tracking; company research via DuckDuckGo enriches job context at scoring time
+- Supabase multi-user backend — each user's resume, scores, and pipeline are fully isolated
 - MCP server exposes all tools so Claude can orchestrate the full workflow via natural language
 
-**Stack:** Python · Anthropic SDK · Claude Haiku + Sonnet · Playwright · Supabase · Streamlit · PyMuPDF · MCP
+**Stack:** Python · Claude Sonnet · Supabase · Streamlit · PyMuPDF · imaplib · ddgs · Playwright · MCP
 **Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[View repo →](https://github.com/tegapeters/job-bot)**
 
 ---
