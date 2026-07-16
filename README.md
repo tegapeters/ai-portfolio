@@ -17,6 +17,7 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
 | 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
+| 09 | [Zillow SQL Prep](#09-zillow-sql-prep) | SQL / Interview Prep | PostgreSQL 16 · Python · Next.js · Claude Code | 50-question Zillow interview environment: 9-table schema, `zql` CLI tutor, auto-grader, Next.js UI — built to prep for a Senior BI role |
 
 ---
 
@@ -126,6 +127,24 @@ End-to-end pipeline that sources job listings in parallel across 5 boards, score
 
 **Stack:** Python · Claude Sonnet · Supabase · Streamlit · PyMuPDF · imaplib · ddgs · Playwright · MCP
 **Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[Overview →](https://job-pal-overview.vercel.app)** | **[View repo →](https://github.com/tegapeters/job-bot)**
+
+---
+
+## 09 Zillow SQL Prep
+
+**50-question SQL interview environment built for a Senior BI Analyst role at Zillow**
+
+Local PostgreSQL 16 practice environment with a realistic 9-table Zillow schema (~50K synthetic events), a CLI tutor, an auto-grader, and a Next.js UI. Claude Code acts as the in-session tutor — no external API calls or costs.
+
+- **9-table schema:** users, listings, events, sessions, agents, markets, subscriptions, lead_assignments, saved_searches — full join graph covering the Zillow data model
+- **`zql` CLI:** `list`, `show`, `run`, `grade`, `solution`, `explain`, `sample` — full interview workflow from a single command
+- **Auto-grader:** psycopg2 row-set comparison against reference SQL; handles ORDER BY-insensitive matching
+- **50 questions across 5 categories:** funnel analysis, window functions, cohort retention, marketplace health, forecasting — weighted to actual interview frequency
+- **Next.js 14 UI:** browse questions, run queries, view results and explanations in-browser
+- Claude Code as LLM tutor: picks questions, explains mistakes, builds solutions on demand — operates entirely on local context
+
+**Stack:** PostgreSQL 16 · Python · psycopg2 · Next.js 14 · Claude Code
+**[View repo →](https://github.com/tegapeters/zillow-sql-prep)**
 
 ---
 
