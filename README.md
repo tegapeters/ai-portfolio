@@ -109,6 +109,7 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 
 ---
 
+<!-- JOB-PAL-START -->
 ## 08 Job Pal
 
 **Agentic AI job search engine — scrape, score, apply, track, network**
@@ -127,6 +128,7 @@ End-to-end pipeline that sources job listings in parallel across 5 boards, score
 
 **Stack:** Python · Claude Sonnet · Supabase · Streamlit · PyMuPDF · imaplib · ddgs · Playwright · MCP
 **Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[Overview →](https://job-pal-overview.vercel.app)** | **[View repo →](https://github.com/tegapeters/job-bot)**
+<!-- JOB-PAL-END -->
 
 ---
 
