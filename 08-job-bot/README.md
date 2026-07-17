@@ -16,7 +16,7 @@ LinkedIn · Indeed · Remotive
     (Python · Playwright · BeautifulSoup)
          │
          ▼
-  Claude Haiku Scorer
+  Claude Sonnet Scorer
   - Resume-fit score 1–10
   - Seniority classification
   - Salary match detection
@@ -44,8 +44,8 @@ Claude Sonnet Cover Letter
 
 ## Features
 
-- **Multi-source scraping** — LinkedIn (session-cookie auth), Indeed, Remotive
-- **Dual-model AI pipeline** — Haiku for fast/cheap scoring, Sonnet for quality cover letters
+- **Multi-source scraping** — LinkedIn public job search, Indeed, Remotive
+- **AI pipeline** — Claude Sonnet for scoring and cover letter generation
 - **Deduplication** — jobs already scored are never re-processed (no wasted API calls)
 - **Streamlit UI** — score distribution charts, filterable job table, inline status updates, one-click pipeline trigger
 - **MCP server** — exposes all tools so Claude can orchestrate the full workflow via natural language
@@ -55,7 +55,7 @@ Claude Sonnet Cover Letter
 
 ## Stack
 
-Python · Anthropic SDK (Claude Haiku + Sonnet) · Playwright · Supabase · Streamlit · MCP
+Python · Anthropic SDK (Claude Sonnet) · Playwright · Supabase · Streamlit · MCP
 
 ---
 
