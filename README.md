@@ -16,9 +16,9 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 04 | [VisionConnect](#04-visionconnect) | Spatial Computing / visionOS | Swift · RealityKit · GroupActivities (SharePlay) | Apple Vision Pro multiplayer spatial app — MS capstone |
 | 06 | [ShutterMuse.Co Portal](#06-shuttermuse-portal) | AI-Assisted Web Build | HTML · CSS · Vanilla JS · Supabase | Photography client delivery portal built from a flyer |
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
-| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
+| 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events, faculty vertical — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
 | 09 | [Zillow SQL Prep](#09-zillow-sql-prep) | SQL / Interview Prep | PostgreSQL 16 · Python · Next.js · Claude Code | 50-question Zillow interview environment: 9-table schema, `zql` CLI tutor, auto-grader, Next.js UI — built to prep for a Senior BI role |
-| 10 | [Eshie — AI Case Assistant](#10-eshie) | AI-Powered Legal SaaS | FastAPI · React · Claude Sonnet · Postgres · Zapier | Production AI assistant for a personal injury law firm — live case briefs, morning brief, Dropbox sync, Microsoft SSO |
+| 10 | [Eshie — Esh Law Group AI](#10-eshie--esh-law-group-ai) | AI Assistant / Law Firm | React · FastAPI · PostgreSQL · Claude Sonnet · Zapier | Deployed AI assistant for a personal injury law firm — real-time case status briefs, morning rundowns, Zapier-driven webhooks from CASEpeer |
 
 ---
 
@@ -113,21 +113,29 @@ Built from a single photo of a printed flyer — extracted brand identity, layou
 <!-- JOB-PAL-START -->
 ## 08 Job Pal
 
-**Agentic AI job search engine — scrape, score, apply, track, network**
+**Agentic AI job search engine — scrape, score, apply, track, network, teach**
 
-End-to-end pipeline that sources job listings in parallel across 5 boards, scores each one against an uploaded resume using Claude Sonnet, generates tailored cover letters for qualified matches, and surfaces everything in a branded Streamlit dashboard. Deployed live as a beta SaaS product with multi-user auth.
+End-to-end pipeline that sources job listings in parallel across 8 boards, scores each one against an uploaded resume using Claude Sonnet, generates tailored cover letters for qualified matches, and surfaces everything in a branded Streamlit dashboard. Deployed live as a beta SaaS product with multi-user auth and a daily automated cloud scrape.
 
-- **Parallel 5-source scraping:** LinkedIn, Indeed, Remotive, We Work Remotely, Jobicy — deduplicated across all sources, runs concurrently
-- **Resume upload:** PDF, DOCX, or TXT — text extracted via PyMuPDF and python-docx; full resume sent via prompt caching for token efficiency
-- **Claude Sonnet pipeline:** 1–10 resume-fit scoring (seniority, salary match, one-line reason) + role-specific 3-paragraph cover letters for 8+ matches
-- **Gmail rejection scanning:** IMAP-based scan auto-runs on Applied page load — surfaces rejection emails, matches to applied jobs, one-click mark as rejected
-- **Networking events:** 3-source event scraper (Meetup RSS, Luma city JSON, AllEvents.in) → 95+ events/city; Interested/Attending tracking with status persistence across re-scrapes
-- **Application lifecycle:** Review Queue → Applied → Interviews → Rejected — full tracking with response rate and pipeline timing
-- **Pipeline timing:** Per-stage duration tracking; company research via DuckDuckGo enriches job context at scoring time
-- Supabase multi-user backend — each user's resume, scores, and pipeline are fully isolated
+**What's live:**
+- **Parallel 8-source scraping:** LinkedIn, RemoteOK, Adzuna, Remotive, We Work Remotely, Jobicy, The Muse, Google Jobs — cross-source dedup by title+company
+- **Faculty / adjunct vertical:** Toggle academic mode → scrapes Inside Higher Ed feeds, switches to a faculty-specific Claude rubric (degree gate, discipline fit, rank, schedule match) — designed for MS-holding professionals seeking adjunct teaching roles
+- **Resume upload:** PDF, DOCX, or TXT — text extracted via PyMuPDF and python-docx
+- **Claude Sonnet scoring:** 1–10 resume-fit score (seniority, salary match, one-line reason) + tailored 3-paragraph cover letters for 8+ matches
+- **Gmail rejection scanning:** IMAP-based scan surfaces rejection emails, matches to applied jobs, one-click mark as rejected
+- **Networking events:** Meetup RSS + Luma + AllEvents → 95+ events/city with Interested/Attending tracking
+- **Daily cron via GitHub Actions:** Mon–Fri 8am ET, runs without local machine — new jobs waiting each morning
+- **Application lifecycle:** Review Queue → Applied → Interviews → Rejected with response-rate tracking
+- **Touch-native Review Queue:** Swipe left/right or tap to Skip/Apply, velocity-based gesture detection, 52px tap targets on mobile
+- Supabase multi-user backend — resume, scores, and pipeline fully isolated per user
 - MCP server exposes all tools so Claude can orchestrate the full workflow via natural language
 
-**Stack:** Python · Claude Sonnet · Supabase · Streamlit · PyMuPDF · imaplib · ddgs · Playwright · MCP
+**Build plan — next:**
+- Daily email digest (top 5 matches delivered each morning)
+- Stripe subscriptions (free → Seeker $12/mo → Pro $25/mo)
+- Greenhouse / Lever company watchlist — alert when a target company posts
+
+**Stack:** Python · Claude Sonnet · Supabase · Streamlit · GitHub Actions · PyMuPDF · imaplib · Playwright · MCP
 **Live:** [jobpal.streamlit.app](https://jobpal.streamlit.app) | **[Overview →](https://job-pal-overview.vercel.app)** | **[View repo →](https://github.com/tegapeters/job-bot)**
 <!-- JOB-PAL-END -->
 
@@ -151,7 +159,7 @@ Local PostgreSQL 16 practice environment with a realistic 9-table Zillow schema 
 
 ---
 
-## 10 Eshie
+## 10 Eshie — Esh Law Group AI
 
 **Production AI legal assistant for Esh Law Group — personal injury litigation firm, Houston TX**
 
@@ -166,10 +174,15 @@ End-to-end AI system built and deployed for a real law firm. Staff ask about any
 - **Auth:** Email/password + Microsoft SSO via Azure OAuth2 — each staff member's brief is filtered to their assigned tasks
 - **First-login onboarding:** 7-step animated walkthrough fires on first login, per user
 
+**Build plan — next:**
+- Kenect SMS webhook (pending Kenect login credentials)
+- Google Calendar integration for hearing/deposition scheduling
+- Client intake flow — new lead → structured intake form → auto-brief for the assigned attorney
+
 **Architecture:** React/Vite (Vercel) → FastAPI (Render) → Claude Sonnet (Anthropic API) → Postgres (Render)
 **Integrations:** CASEpeer · Zapier · Dropbox · Microsoft Azure AD
 **Stack:** Python · FastAPI · React · Vite · Tailwind · PostgreSQL · psycopg2 · python-jose · Claude Sonnet · Zapier
-**Live:** [frontend-olive-ten-53.vercel.app](https://frontend-olive-ten-53.vercel.app) | **[Repo →](https://github.com/tegapeters/esh-law-ai)** *(private)*
+**Live:** [frontend-olive-ten-53.vercel.app](https://frontend-olive-ten-53.vercel.app) | **[Repo →](https://github.com/tegapeters/esh-law-ai)**
 
 ---
 
