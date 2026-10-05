@@ -18,7 +18,7 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
 | 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events, faculty vertical — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
 | 09 | [Zillow SQL Prep](#09-zillow-sql-prep) | SQL / Interview Prep | PostgreSQL 16 · Python · Next.js · Claude Code | 50-question Zillow interview environment: 9-table schema, `zql` CLI tutor, auto-grader, Next.js UI — built to prep for a Senior BI role |
-| 10 | [Eshie — Esh Law Group AI](#10-eshie--esh-law-group-ai) | AI Assistant / Law Firm | React · FastAPI · PostgreSQL · Claude Sonnet · Zapier | Deployed AI assistant for a personal injury law firm — real-time case status briefs, morning rundowns, Zapier-driven webhooks from CASEpeer |
+| 10 | [Eshie — Esh Law Group AI](#10-eshie--esh-law-group-ai) | AI Assistant / Law Firm | React · FastAPI · PostgreSQL · Claude Sonnet · MCP | Production AI case assistant — streaming chat, approve-to-act write-back, Teams bot, Kenect + RingCentral ingestion, firm-wide morning brief — [live](https://eshie.techturi.org) |
 
 ---
 
@@ -163,26 +163,30 @@ Local PostgreSQL 16 practice environment with a realistic 9-table Zillow schema 
 
 **Production AI legal assistant for Esh Law Group — personal injury litigation firm, Houston TX**
 
-End-to-end AI system built and deployed for a real law firm. Staff ask about any client in plain English and get an accurate, live case brief — pulling from CASEpeer, Dropbox, and firm task history. Fully in daily use.
+End-to-end AI system built and deployed for a real law firm. Staff ask about any client in plain English and get a live case brief. The system handles data from five sources (CASEpeer, Dropbox, Kenect, RingCentral, Gmail), writes back to CASEpeer through an approve-to-act flow, and posts a firm-wide morning rundown to Teams every day. Fully in daily use.
 
-- **Live case briefs:** Claude Sonnet calls a `get_case` tool that hits the firm's Postgres DB, returning current status, status change history, open tasks, notes, recent messages, and Dropbox documents on file — all in one attorney-ready brief
-- **Morning brief:** Team-wide daily rundown across all active cases — deadlines today, overnight client messages needing response, unreviewed documents — filtered per logged-in user
-- **Write tools:** Staff log notes and create tasks directly through chat (`create_case_note`, `create_case_task`) — no need to open CASEpeer
-- **CASEpeer sync via Zapier:** 4 Zaps push new cases, status changes, new leads, and Dropbox documents into Postgres in real time
-- **Historical import:** One-time CSV import of 210 existing open cases from CASEpeer's export — all live from day one
-- **Dropbox document intake:** New files in `000_CLIENTS/LASTNAME, FIRSTNAME/03. MEDICAL RECORDS/` auto-detected and linked to the right case by parsing the folder name
-- **Auth:** Email/password + Microsoft SSO via Azure OAuth2 — each staff member's brief is filtered to their assigned tasks
-- **First-login onboarding:** 7-step animated walkthrough fires on first login, per user
+- **Conversational streaming chat:** Staff type natural-language questions; Claude Sonnet streams back an attorney-ready brief from Postgres — current status, open tasks, notes, recent messages, Dropbox documents, and call history
+- **Approve-to-act write-back:** Case notes and tasks are staged as a card in the UI; staff click Approve to execute. Nothing writes to CASEpeer without explicit confirmation
+- **Morning brief:** Firm-wide daily rundown — deadlines today, SOL windows closing, overnight client messages needing response, new unreviewed documents. Attorneys and admins see all cases; staff see their assigned ones
+- **Microsoft Teams bot:** Read-only bot posts the morning brief to a Teams channel and answers ad-hoc case questions in Teams chat
+- **Kenect + RingCentral ingestion:** Inbound and outbound client texts (Kenect) and calls (RingCentral) land in Postgres via Zapier webhooks and are matched to cases by last-10-digit phone lookup
+- **Dropbox document intake:** New files auto-detected and linked to the right case by parsing the `LASTNAME, FIRSTNAME` folder name and numbered subfolder (e.g., `03. MEDICAL RECORDS`)
+- **CASEpeer sync via Zapier:** 4 Zaps push new cases, status changes, new leads, and client texts into Postgres in real time. CSV import seeded 210 existing open cases on day one
+- **Cross-case read tools:** "Who's waiting on a reply?" and SOL warnings work firm-wide in both chat and the Teams bot — not just per-case lookups
+- **Auth:** Google-only SSO with offline access — silent token refresh so staff aren't re-prompted hourly
 
-**Build plan — next:**
-- Kenect SMS webhook (pending Kenect login credentials)
-- Google Calendar integration for hearing/deposition scheduling
-- Client intake flow — new lead → structured intake form → auto-brief for the assigned attorney
+**Engineering deep-dive:** [ENGINEERING.md →](https://github.com/tegapeters/esh-law-ai/blob/main/ENGINEERING.md) (MCP tool catalog, phone matching logic, Dropbox folder parsing, approve-to-act flow)
+
+**Roadmap:**
+- Kenect Zap (blocked on CSM credentials) — will make "waiting on a reply" automatic instead of manual
+- Proactive cross-case risk checks
+- Chat history sidebar + case-level memory
+- Read document contents (OCR + vision)
 
 **Architecture:** React/Vite (Vercel) → FastAPI (Render) → Claude Sonnet (Anthropic API) → Postgres (Render)
-**Integrations:** CASEpeer · Zapier · Dropbox · Microsoft Azure AD
-**Stack:** Python · FastAPI · React · Vite · Tailwind · PostgreSQL · psycopg2 · python-jose · Claude Sonnet · Zapier
-**Live:** [frontend-olive-ten-53.vercel.app](https://frontend-olive-ten-53.vercel.app) | **[Repo →](https://github.com/tegapeters/esh-law-ai)**
+**Integrations:** CASEpeer · Zapier · Dropbox · Kenect · RingCentral · Gmail · Microsoft Teams
+**Stack:** Python · FastAPI · React · Vite · Tailwind · PostgreSQL · Claude Sonnet · MCP (in-house server) · Google OAuth 2.0
+**Live:** [eshie.techturi.org](https://eshie.techturi.org) | **[Repo →](https://github.com/tegapeters/esh-law-ai)**
 
 ---
 
