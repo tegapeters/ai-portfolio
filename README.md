@@ -18,7 +18,7 @@ OCI Data Science Professional · OCI GenAI Professional · AI Foundations · 12 
 | 07 | [Techturi](https://techturi.org) | Full-Stack Platform | Next.js · TypeScript · Vercel | Free tech education platform + web dev studio. 8 cert roadmaps, /book, /intake, Vercel Analytics. Live at techturi.org |
 | 08 | [Job Pal](#08-job-pal) | AI Automation / Agentic | Python · Claude Sonnet · Supabase · Streamlit | Agentic job engine: parallel scraping, AI scoring + cover letters, Gmail rejection scanning, networking events, faculty vertical — [live app](https://jobpal.streamlit.app) · [overview](https://job-pal-overview.vercel.app) |
 | 09 | [Zillow SQL Prep](#09-zillow-sql-prep) | SQL / Interview Prep | PostgreSQL 16 · Python · Next.js · Claude Code | 50-question Zillow interview environment: 9-table schema, `zql` CLI tutor, auto-grader, Next.js UI — built to prep for a Senior BI role |
-| 10 | [Eshie — a personal injury law firm AI](#10-eshie--esh-law-group-ai) | AI Assistant / Law Firm | React · FastAPI · PostgreSQL · Claude Sonnet · MCP | Production AI case assistant — streaming chat, approve-to-act write-back, Teams bot, Kenect + RingCentral ingestion, firm-wide morning brief — [live]([private deployment]) |
+| 10 | [Eshie — AI Legal Operations Assistant](#10-eshie--ai-legal-operations-assistant) | AI Assistant / Legal Ops | React · FastAPI · PostgreSQL · Claude Sonnet · MCP | Production AI case assistant — streaming chat, approve-to-act write-back, Teams bot, morning brief (client details withheld) |
 
 ---
 
@@ -159,34 +159,21 @@ Local PostgreSQL 16 practice environment with a realistic 9-table Zillow schema 
 
 ---
 
-## 10 Eshie — a personal injury law firm AI
+## 10 Eshie — AI Legal Operations Assistant
 
-**Production AI legal assistant for a personal injury law firm — personal injury litigation firm, Houston TX**
+**Production AI case assistant for a personal injury law firm (client details withheld)**
 
-End-to-end AI system built and deployed for a real law firm. Staff ask about any client in plain English and get a live case brief. The system handles data from five sources (CASEpeer, Dropbox, Kenect, RingCentral, Gmail), writes back to CASEpeer through an approve-to-act flow, and posts a firm-wide morning rundown to Teams every day. Fully in daily use.
+End-to-end AI system built and deployed for a real firm. Staff ask about any client in plain English and get a live case brief. It combines case-management, document, messaging, call, and email data, writes back through an approve-to-act flow, and delivers a morning brief to Microsoft Teams.
 
-- **Conversational streaming chat:** Staff type natural-language questions; Claude Sonnet streams back an attorney-ready brief from Postgres — current status, open tasks, notes, recent messages, Dropbox documents, and call history
-- **Approve-to-act write-back:** Case notes and tasks are staged as a card in the UI; staff click Approve to execute. Nothing writes to CASEpeer without explicit confirmation
-- **Morning brief:** Firm-wide daily rundown — deadlines today, SOL windows closing, overnight client messages needing response, new unreviewed documents. Attorneys and admins see all cases; staff see their assigned ones
-- **Microsoft Teams bot:** Read-only bot posts the morning brief to a Teams channel and answers ad-hoc case questions in Teams chat
-- **Kenect + RingCentral ingestion:** Inbound and outbound client texts (Kenect) and calls (RingCentral) land in Postgres via Zapier webhooks and are matched to cases by last-10-digit phone lookup
-- **Dropbox document intake:** New files auto-detected and linked to the right case by parsing the `LASTNAME, FIRSTNAME` folder name and numbered subfolder (e.g., `03. MEDICAL RECORDS`)
-- **CASEpeer sync via Zapier:** 4 Zaps push new cases, status changes, new leads, and client texts into Postgres in real time. CSV import seeded 210 existing open cases on day one
-- **Cross-case read tools:** "Who's waiting on a reply?" and SOL warnings work firm-wide in both chat and the Teams bot — not just per-case lookups
-- **Auth:** Google-only SSO with offline access — silent token refresh so staff aren't re-prompted hourly
+- **Conversational streaming chat:** Natural-language questions answered with an attorney-ready brief streamed from Postgres — status, open tasks, notes, recent messages, documents, and call history
+- **Approve-to-act write-back:** Notes and tasks are staged as a card in the UI; nothing is written to the case-management system without explicit confirmation
+- **Morning brief:** Daily rundown of deadlines, statute-of-limitations windows, overnight client messages, and unreviewed documents, with role-based visibility
+- **Microsoft Teams bot:** Read-only bot posts the morning brief to a channel and answers ad-hoc case questions
+- **Webhook ingestion:** Case, message, call, and document events land in Postgres and are matched to the right case automatically
+- **Auth:** Google-only SSO with silent token refresh
 
-**Engineering deep-dive:** [ENGINEERING.md →]([private repository]) (MCP tool catalog, phone matching logic, Dropbox folder parsing, approve-to-act flow)
-
-**Roadmap:**
-- Kenect Zap (blocked on CSM credentials) — will make "waiting on a reply" automatic instead of manual
-- Proactive cross-case risk checks
-- Chat history sidebar + case-level memory
-- Read document contents (OCR + vision)
-
-**Architecture:** React/Vite (Vercel) → FastAPI (Render) → Claude Sonnet (Anthropic API) → Postgres (Render)
-**Integrations:** CASEpeer · Zapier · Dropbox · Kenect · RingCentral · Gmail · Microsoft Teams
+**Architecture:** React/Vite → FastAPI → Claude Sonnet (Anthropic API) → Postgres
 **Stack:** Python · FastAPI · React · Vite · Tailwind · PostgreSQL · Claude Sonnet · MCP (in-house server) · Google OAuth 2.0
-**Live:** [[private deployment]]([private deployment]) | **[Repo →]([private repository])**
 
 ---
 
